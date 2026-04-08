@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Moment 💜</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #E6E6FA, #D8BFD8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Flashing Title */
+.flash {
+    font-size: 26px;
+    color: #6a0dad;
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.2);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #9370DB;
+    color: white;
+    font-size: 16px;
+    animation: flash 1.2s infinite;
+}
+
+/* Message */
+.message {
+    font-size: 15px;
+    color: #4b0082;
+    text-align: left;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Mobile */
+@media(max-width:500px){
+    .flash { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Screen 1 -->
+<div id="screen1" class="screen">
+    <div class="card">
+        <h1 class="flash">Let's Celebrate This Special Moment 💜</h1>
+        <button onclick="nextScreen(2)">Click Here 💌</button>
+    </div>
+</div>
+
+<!-- Screen 2 (Message) -->
+<div id="screen2" class="screen hidden">
+    <div class="card">
+        <div class="message">
+<pre>
+HAPPY BIRTHDAY MY DEAREST WIFEYYYYY.....✨✨💗💗💗🧿💗💗💗✨✨
+
+First of all I want to tell you that On your special day as mine more, I want to express my gratitude for having you as my wife 🧿💝 Every day spent with you feels like a beautiful dream I never want to wake up from....
+
+^_^
+
+Babe you are not just my wife you are my confidante, partner, and greatest supporter..
+
+💞
+
+Once again to the woman who makes my world complete, happy birthday....You are my once-in-a-lifetime love...
+
+💓
+
+I want to express you that when we are together, the world disappears, and I see only your beautiful eyes and enigmatic smile, and hear only your lovely voice...
+
+🩷
+
+Every day feels like a celebration with you by my side, but today is extra special ,Happy birthday my gorgeous lady...
+
+💘
+
+I was only drifting through life until I met you. You taught me how to live life to the fullest, I express my thanks to the heaven above for bringing you into my life and made it as much as beautiful that I never ever expected...
+
+💌
+
+Several lifetimes would not be enough for me to show you what you mean to me, My only request to you is that please stay with me forever don't ever leave me. My whole life is about you , for you and with you...
+
+💗
+
+I I I I Loveeee Youuuu more than anything!.....You can't even understand how much my love is mean to you...!!!
+
+~ MANY MANY HAPPY RETURNS OF THE DAY MY CRAZIEST WIFEEEE 💗✨
+</pre>
+        </div>
+        <button onclick="celebrate()">Celebrate 🎉</button>
+        <button onclick="nextScreen(3)">FOR FUN 😏</button>
+    </div>
+</div>
+
+<!-- Screen 3 (Truth & Dare) -->
+<div id="screen3" class="screen hidden">
+    <div class="card">
+        <h2>Truth 💞</h2>
+        <p id="truthQ"></p>
+
+        <h2>Dare 💘</h2>
+        <p id="dareQ"></p>
+
+        <button onclick="newGame()">Next Question 🔄</button>
+        <button onclick="nextScreen(4)">Finish 💌</button>
+    </div>
+</div>
+
+<!-- Screen 4 (Warning) -->
+<div id="screen4" class="screen hidden">
+    <div class="card">
+        <h2 class="flash">⚠️ WARNING ⚠️</h2>
+        <p>DON'T SKIP ANY QUESTIONS 😤<br>
+        Answer it in our LOVEYYYYY DOVEYYY Instagram chats 💗✨</p>
+    </div>
+</div>
+
+<script>
+function nextScreen(num){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"));
+    document.getElementById("screen"+num).classList.remove("hidden");
+}
+
+/* Confetti */
+function celebrate(){
+    confetti({ particleCount: 200, spread: 120 });
+}
+
+/* Truth & Dare */
+const truths = [
+"What's the deepest feeling you have for me?",
+"When did you realize you love me the most?",
+"What scares you about losing me?",
+"What is your favorite memory with me?"
+];
+
+const dares = [
+"Send me a voice note saying 'I love you' in cutest way 💗",
+"Describe our first kiss in detail 😏",
+"Promise me something romantic right now 💞",
+"Say 3 reasons why you can't live without me"
+];
+
+function newGame(){
+    document.getElementById("truthQ").innerText =
+        truths[Math.floor(Math.random()*truths.length)];
+
+    document.getElementById("dareQ").innerText =
+        dares[Math.floor(Math.random()*dares.length)];
+}
+
+/* Load first question */
+newGame();
+</script>
+
+</body>
+</html>
